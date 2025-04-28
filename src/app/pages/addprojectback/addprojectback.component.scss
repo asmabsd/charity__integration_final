@@ -1,0 +1,133 @@
+/* project.component.css */
+
+/* Container Styling */
+.container {
+  max-width: 700px; /* Agrandi la largeur */
+  margin: 40px auto;
+  padding: 48px 40px 36px 40px; /* Plus de padding */
+  background: linear-gradient(135deg, #ffe082 0%, #ffd54f 100%); /* Jaune plus sombre */
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.18), 0 2px 8px rgba(0,0,0,0.07);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  border: 1.5px solid #ffb300;
+}
+
+/* Titre principal en vert foncé */
+h2 {
+  color: #2e7d32; /* vert foncé */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
+}
+
+/* Success & Error Messages */
+.alert {
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  font-size: 1.05em;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.10);
+}
+.alert-success {
+  background: #fffde7;
+  color: #5c8001;
+  border-left: 5px solid #ffe066;
+}
+.alert-danger {
+  background: #fff3e0;
+  color: #b71c1c;
+  border-left: 5px solid #ffb300;
+}
+
+/* Form Styling */
+.form-group, form > div {
+  margin-bottom: 18px;
+}
+
+/* Labels en vert moyen */
+label {
+  display: block;
+  font-weight: 600;
+  color: #388e3c; /* vert moyen */
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* Inputs et selects */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid #ffe066;
+  border-radius: 7px;
+  background: #fffef6;
+  font-size: 1em;
+  color: #2e7d32; /* texte vert foncé */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(255, 193, 7, 0.07);
+}
+
+input:focus,
+select:focus {
+  border-color: #4caf50; /* vert clair au focus */
+  box-shadow: 0 0 0 2px #a5d6a7cc; /* vert clair transparent */
+  background: #f1f8e9; /* fond vert très clair */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Error Text */
+.text-danger {
+  color: #b71c1c;
+  font-size: 0.97em;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Submit Button */
+.btn-primary {
+  background: linear-gradient(90deg, #ffc107 0%, #ffb300 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 1.08em;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background: linear-gradient(90deg, #ffb300 0%, #ffc107 100%);
+  box-shadow: 0 4px 16px rgba(255, 193, 7, 0.24);
+  color: #fff;
+}
+
+.btn-primary:disabled {
+  background: #ffe082;
+  color: #bfa600;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    max-width: 98vw;
+    padding: 18px 7px 14px 7px;
+  }
+  h2 {
+    font-size: 1.35em;
+  }
+}

@@ -1,0 +1,31 @@
+<!-- src/app/pages/dashboard/dashboard.component.html -->
+<div class="d-flex">
+  <nav class="flex-shrink-0 p-3 bg-light" style="width:200px;">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="campaigns" routerLinkActive="active">My Campaigns</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="blogs" routerLinkActive="active">My Blog Posts</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="listeprojects" routerLinkActive="active">My Projects</a>
+      </li>
+
+
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="deliverylist" routerLinkActive="active">My Deliveries</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="listesponsoring" routerLinkActive="active">Sponsorships</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="flex-fill p-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

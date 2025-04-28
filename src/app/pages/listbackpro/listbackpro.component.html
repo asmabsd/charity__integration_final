@@ -1,0 +1,91 @@
+<div class="max-w-5xl mx-auto p-6">
+    <h2 class="text-3xl font-bold text-yellow-700 mb-6 text-center">Liste des Projets</h2>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+   
+  
+  
+    <div class="flex space-x-4">
+      <!-- Stats Button -->
+      <a [routerLink]="['/dashboard/statsproject']" class="btn btn-stats flex items-center justify-center">
+        <i class="fas fa-chart-line mr-2"></i> Statistics
+      </a>
+  
+      <!-- New Project Button -->
+      <a [routerLink]="['/dashboard/projects/add']" class="btn btn-new-project flex items-center justify-center">
+        <i class="fas fa-plus-circle mr-2"></i> + New Project
+      </a>
+    </div>
+  
+  
+    <div *ngIf="loading" class="text-yellow-500 text-center">Chargement des projets...</div>
+    <div *ngIf="error" class="text-red-600 text-center">{{ error }}</div>
+  
+    <div *ngIf="projects.length > 0">
+      <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full bg-white border border-yellow-200">
+          <thead class="bg-yellow-100 text-yellow-800 uppercase">
+            <tr>
+              <th class="py-3  border-b">Titre</th>
+              <th class="py-3  border-b">Association ID</th>
+              <th class="py-3  border-b">Date Signature</th>
+              <th class="py-3  border-b">Budget</th>
+              <th class="py-3  border-b">Type</th>
+              <th class="py-3  border-b">Statut</th>
+              <th class="py-3  border-b text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of projects" class="hover:bg-yellow-50 transition-all">
+              <td class="py-3  border-b">{{ project.titre }}</td>
+              <td class="py-3  border-b">{{ project.associationId }}</td>
+              <td class="py-3  border-b">{{ project.dateSignature }}</td>
+              <td class="py-3  border-b">{{ project.budget | currency:'EUR' }}</td>
+              <td class="py-3  border-b">{{ project.type_sponsoring }}</td>
+              <td class="py-3  border-b">
+                <ng-container *ngIf="project.projectStatus === 'EN_ATTENTE'; else statusDisplay">
+                  <button (click)="updateStatus(project.projectId ?? 0, 'OUVERT')" class="btn btn-success mr-2">
+                    Accept
+                  </button>
+                  <button *ngIf="project.projectId !== undefined" (click)="updateStatus(project.projectId, 'FERME')" class="btn btn-danger">
+                    Reject
+                  </button>
+                </ng-container>
+                <ng-template #statusDisplay>
+                  <span [ngClass]="{
+                    'text-green-600 font-semibold': project.projectStatus === 'OUVERT',
+                    'text-yellow-500 font-semibold': project.projectStatus === 'EN_ATTENTE',
+                    'text-red-600 font-semibold': project.projectStatus === 'FERME'
+                  }">
+                    <i class="fas" [ngClass]="{
+                      'fa-check-circle': project.projectStatus === 'OUVERT',
+                      'fa-hourglass-half': project.projectStatus === 'EN_ATTENTE',
+                      'fa-times-circle': project.projectStatus === 'FERME'
+                    }"></i> {{ project.projectStatus }}
+                  </span>
+                </ng-template>
+              </td>
+              <td class="py-3  border-b text-center space-x-4">
+                <!-- Voir Button -->
+                <a [routerLink]="['/dashboard/projects', project.projectId]" class="btn btn-view flex items-center justify-center">
+                  <i class="fas fa-eye mr-2"></i> Voir
+                </a>
+  
+                <!-- Edit Button -->
+                <a [routerLink]="['/dashboard/projects/edit', project.projectId]" class="btn btn-edit flex items-center justify-center">
+                  <i class="fas fa-edit mr-2"></i> Edit
+                </a>
+  
+                <!-- Delete Button -->
+                <button *ngIf="project.projectId !== undefined" (click)="deleteProject(project.projectId)" class="btn btn-delete flex items-center justify-center">
+                  <i class="fas fa-trash mr-2"></i> Delete
+                </button>
+              </td>
+              <router-outlet></router-outlet>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

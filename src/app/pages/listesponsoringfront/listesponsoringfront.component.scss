@@ -1,0 +1,131 @@
+/* === Global container styling === */
+.sponsoring-list-container {
+  padding: 24px;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* === Table styling === */
+.sponsoring-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.sponsoring-table th, .sponsoring-table td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sponsoring-table thead {
+  background-color: #333;
+  color: #fff;
+}
+
+.sponsoring-table tbody tr:hover {
+  background-color: #f4f4f4;
+}
+
+/* === Action buttons grouped styling === */
+.sponsoring-table td {
+  vertical-align: middle;
+}
+
+.sponsoring-table td button {
+  margin: 5px 4px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* === Individual button types === */
+.btn-submit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #0069d9;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.global-contact-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.global-contact-button:hover {
+  background-color: #218838;
+}
+
+/* Optional: style the bottom paragraph */
+.contact-your-sponsor {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #555;
+  font-style: italic;
+}
+.btn-pdf {
+  background-color: #b02a37;
+  color: white;
+}
+
+.btn-pdf:hover {
+  background-color: #96212c;
+}
+.global-contact-button {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.global-contact-button:hover {
+  background: linear-gradient(135deg, #34d399 0%, #106f50 100%); /* Green gradient */
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.icon-bubble {
+  background-color: white;
+  color: #6a11cb;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* 👈 makes it a perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.global-contact-button:hover .icon-bubble {
+  background-color: #fff;
+  color: #0f6045; /* Green color for icon */
+}

@@ -1,0 +1,18 @@
+<div class="view-sponsoring-details-container">
+    <h2>Sponsoring Details</h2>
+  
+    <!-- Display the sponsoring details if they are available -->
+    <div *ngIf="sponsoring">
+      <p><strong>Project ID:</strong> {{ sponsoring.project_id }}</p>
+      <p><strong>Date of Signature:</strong> {{ sponsoring.date_signature  }}</p>
+      <p><strong>Approved Amount:</strong> {{ sponsoring.montant_approuvee  }}</p>
+      <p><strong>Contract:</strong> {{ sponsoring.contrat }}</p>
+    </div>
+  
+    <!-- Display error message if there's an issue -->
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+    <!-- Back button to navigate to the sponsoring list -->
+    <button (click)="goBack()" class="btn-back">Back to List</button>
+  </div>
+  

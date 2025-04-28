@@ -1,0 +1,139 @@
+<div class="project-container">
+
+    <h2 class="project-title">🌍 Projets Disponibles</h2>
+
+    <div class="action-btn-container">
+        <a [routerLink]="['/sponsorfrontliste']" class="view-sponsors-btn">
+            <i class="fas fa-eye mr-2"></i> View sponsorings list
+        </a>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <div class="filter-grid">
+            <!-- Filter controls -->
+            <div class="filter-item">
+                <label class="filter-label">Filter By:</label>
+                <select [(ngModel)]="filterAttribute" class="filter-control">
+                    <option value="titre">Title</option>
+                    <option value="dateSignature">Date</option>
+                    <option value="type_sponsoring">Sponsoring Type</option>
+                    <option value="projectStatus">Status</option>
+                    <option value="budget">Budget</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label class="filter-label">Search Value:</label>
+                <input type="text" [(ngModel)]="searchTerm" placeholder="Enter search term" 
+                       class="filter-input" (keyup.enter)="applyFilters()">
+            </div>
+
+            <div class="filter-item">
+                <label class="filter-label">Sort By:</label>
+                <select [(ngModel)]="sortBy" class="filter-control">
+                    <option value="titre">Title</option>
+                    <option value="dateSignature">Date</option>
+                    <option value="type_sponsoring">Sponsoring Type</option>
+                    <option value="projectStatus">Status</option>
+                    <option value="budget">Budget</option>
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <label class="filter-label">Sort Direction:</label>
+                <select [(ngModel)]="sortDirection" class="filter-control">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="filter-actions">
+            <button (click)="applyFilters()" class="filter-action-btn search-btn">
+                <i class="fas fa-search mr-2"></i> Search
+            </button>
+            <button (click)="clearFilters()" class="filter-action-btn clear-btn">
+                <i class="fas fa-times mr-2"></i> Clear
+            </button>
+        </div>
+    </div>
+
+    <!-- Chat Floating Button + Chat Box -->
+    <div class="chat-toggle-btn">
+        <img src="/chat.jpg" alt="AI Bot" class="chat-icon" (click)="toggleChat()"/>
+    </div>
+
+    <div *ngIf="showChat" class="chat-box">
+        <h3 class="chat-title">Chat with our Bot AI</h3>
+
+        <div class="message-container">
+            <div *ngFor="let message of messageHistory" [ngClass]="{'user-message': message.from === 'user', 'bot-message': message.from === 'bot'}">
+                {{ message.message }}
+            </div>
+        </div>
+
+        <div class="chat-input-group">
+            <input [(ngModel)]="prompt" type="text" placeholder="Type your message..." class="chat-input">
+            <button (click)="generateResponse()" class="chat-send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Project Grid -->
+    <div *ngIf="filteredProjects.length > 0">
+        <div class="project-grid">
+            <div *ngFor="let project of paginatedProjects" class="project-card">
+                <img [src]="'/project.jpg'" alt="Projet" class="project-image">
+
+                <div class="project-content">
+                    <h3 class="project-name">{{ project.titre }}</h3>
+                    
+                    <p class="project-detail"><strong>Association:</strong> {{ project.associationId }}</p>
+                    <p class="project-detail"><strong>Date:</strong> {{ project.dateSignature }}</p>
+                    <p class="project-detail"><strong>Budget:</strong> {{ project.budget | currency:'EUR' }}</p>
+                    <p class="project-detail"><strong>Type:</strong> {{ project.type_sponsoring }}</p>
+
+                    <span class="project-status" 
+                        [ngClass]="{
+                            'status-open': project.projectStatus === 'OUVERT',
+                            'status-pending': project.projectStatus === 'EN_ATTENTE',
+                            'status-closed': project.projectStatus === 'FERME'
+                        }">
+                        {{ project.projectStatus }}
+                    </span>
+
+                    <div class="currency-converter">
+                        <p class="budget-label"><strong>Budget Converti:</strong>
+                            <span *ngIf="project.convertedBudget">
+                                ({{ project.convertedBudget | currency:selectedCurrency }})
+                            </span>
+                        </p>
+                        <select [(ngModel)]="selectedCurrency" (change)="convertProjectBudget(project)" class="currency-select">
+                            <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+                        </select>
+                    </div>
+
+                    <div class="project-actions">
+                        <a [routerLink]="['/sponsorfront', project.projectId]" class="sponsor-link">
+                            <i class="fas fa-hand-holding-heart mr-1"></i> Sponsor
+                        </a>
+                        <a [routerLink]="['/detailsfrontprojects', project.projectId]" class="details-link">
+                            <i class="fas fa-eye mr-1"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div *ngIf="totalPages > 1" class="pagination">
+            <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1" class="pagination-btn prev-btn">
+                Previous
+            </button>
+            <span class="page-indicator">Page {{currentPage}} of {{totalPages}}</span>
+            <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages" class="pagination-btn next-btn">
+                Next
+            </button>
+        </div>
+    </div>
+</div>

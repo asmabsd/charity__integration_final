@@ -1,0 +1,50 @@
+/* Styling for the View Sponsoring Details page */
+.view-sponsoring-details-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  .error-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+  }
+  
+  .btn-back {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-back:hover {
+    background-color: #45a049;
+  }
+  

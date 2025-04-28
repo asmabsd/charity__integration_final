@@ -1,0 +1,101 @@
+<!-- project.component.html -->
+
+<div class="container">
+    <h2>Add Project</h2>
+  
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+  
+      <!-- Project Title -->
+      <div class="form-group">
+        <label for="titre">Title</label>
+        <input 
+          type="text" 
+          id="titre" 
+          class="form-control" 
+          [(ngModel)]="project.titre" 
+          name="titre" 
+          required 
+          #titre="ngModel"
+        />
+        <div *ngIf="titre.invalid && titre.touched" class="text-danger">
+          Title is required.
+        </div>
+      </div>
+      <div>
+        <label for="dateSignature">Date of Signature:</label>
+        <input type="date" id="dateSignature" [(ngModel)]="project.dateSignature" name="dateSignature" required>
+      </div>
+    
+      <!-- Project Budget -->
+      <div class="form-group">
+        <label for="budget">Budget</label>
+        <input 
+          type="number" 
+          id="budget" 
+          class="form-control" 
+          [(ngModel)]="project.budget" 
+          name="budget" 
+          required 
+          min="1" 
+          #budget="ngModel"
+        />
+        <div *ngIf="budget.invalid && budget.touched" class="text-danger">
+          Budget must be a positive number.
+        </div>
+      </div>
+  
+      <!-- Sponsorship Type -->
+      <div class="form-group">
+        <label for="type_sponsoring">Sponsorship Type</label>
+        <select 
+          id="type_sponsoring" 
+          class="form-control" 
+          [(ngModel)]="project.type_sponsoring" 
+          name="type_sponsoring"
+        >
+          <option value="MATERIEL">MATERIAL</option>
+          <option value="FINANCIERE">FINANCIAL</option>
+        </select>
+      </div>
+  
+      <!-- Project Status -->
+      <div class="form-group">
+        <label for="projectStatus">Project Status</label>
+        <select 
+          id="projectStatus" 
+          class="form-control" 
+          [(ngModel)]="project.projectStatus" 
+          name="projectStatus"
+        >
+          <option value="OUVERT">OPEN</option>
+          <option value="EN_ATTENTE">PENDING</option>
+          <option value="FERME">CLOSED</option>
+        </select>
+      </div>
+  
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="btn btn-primary" 
+        [disabled]="projectForm.invalid"
+      >
+        Submit
+      </button>
+      <br>
+      <br>
+      <button type="button" class="btn-redirect" (click)="goToList()">Back to List</button>
+ 
+    
+    </form>
+  </div>
+  

@@ -1,0 +1,56 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <h2 class="text-3xl font-bold text-indigo-700 mb-6 text-center">🎁 Donation Campaigns</h2>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center py-6 text-gray-500 text-lg">
+    ⏳ Loading campaigns…
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6 text-center">
+    {{ error }}
+  </div>
+
+  <!-- Campaigns Grid -->
+  <div *ngIf="!loading && !error" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-22">
+    <div *ngFor="let c of campaigns" class="bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col">
+      
+      <!-- Image -->
+      <img
+        *ngIf="c.imageUrl"
+        [src]="c.imageUrl"
+        alt="Campaign image"
+        class="h-48 w-full object-cover"
+      />
+
+      <!-- Content -->
+      <div class="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ c.title }}</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            {{ c.description | slice: 0:100 }}…
+          </p>
+        </div>
+        <button
+          (click)="viewCampaign(c.id)"
+          class="mt-auto bg-indigo-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-indigo-700 transition"
+        >
+          View Details
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="bg-gray-50 px-5 py-3 text-sm text-gray-600 font-medium border-t">
+        💰 Raised {{ c.currentAmount | currency }} / {{ c.targetAmount | currency }}
+      </div>
+    </div>
+  </div>
+
+  <!-- No campaigns -->
+  <div
+    *ngIf="campaigns.length === 0 && !loading && !error"
+    class="text-center text-gray-500 text-md mt-10"
+  >
+    😢 No active campaigns found.
+  </div>
+</div>

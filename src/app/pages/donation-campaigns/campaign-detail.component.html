@@ -1,0 +1,128 @@
+<div class="max-w-3xl mx-auto p-6">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="flex justify-center py-12">
+    <div class="animate-pulse text-center">
+      <div class="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+      <div class="h-64 bg-gray-200 rounded-xl mb-4"></div>
+      <div class="h-4 bg-gray-200 rounded w-full mb-2"></div>
+      <div class="h-4 bg-gray-200 rounded w-5/6 mb-8"></div>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="!loading && !campaign" class="bg-red-100 border border-red-400 text-red-800 p-4 rounded-lg">
+    <p class="font-semibold">Unable to load campaign</p>
+    <p *ngIf="errorMsg">{{ errorMsg }}</p>
+    <button 
+      (click)="ngOnInit()" 
+      class="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg">
+      Try Again
+    </button>
+  </div>
+
+  <!-- Campaign Content -->
+  <div *ngIf="!loading && campaign">
+    <!-- Campaign Title -->
+    <h2 class="text-3xl font-bold text-indigo-700 mb-4">{{ campaign.title }}</h2>
+    
+    <!-- Campaign Image -->
+    <img
+      *ngIf="campaign.imageUrl"
+      [src]="campaign.imageUrl"
+      alt="Campaign image"
+      class="w-full h-64 object-cover rounded-xl shadow-md mb-6"
+    />
+    
+    <!-- Description -->
+    <p class="text-gray-700 mb-4">{{ campaign.description }}</p>
+    
+    <!-- Raised Amount -->
+    <div class="bg-gray-100 rounded-lg p-4 text-gray-800 mb-6">
+      <strong>💰 Raised:</strong>
+      {{ campaign.currentAmount | currency }} /
+      {{ campaign.targetAmount | currency }}
+    </div>
+    
+    <!-- Thank You Message -->
+    <div *ngIf="justDonated" class="bg-green-100 border border-green-400 text-green-800 p-4 rounded mb-6">
+      🎉 Thank you for your donation!
+    </div>
+    
+    <!-- Donation Form -->
+    <h4 class="text-xl font-semibold text-gray-800 mb-4">Make a Donation</h4>
+    
+    <form [formGroup]="donationForm" (ngSubmit)="onDonate()" class="space-y-5">
+      <!-- Amount -->
+      <div>
+        <label for="amount" class="block font-medium text-gray-700 mb-1">Amount</label>
+        <input
+          id="amount"
+          type="number"
+          formControlName="amount"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          placeholder="Enter amount"
+        />
+        <div *ngIf="donationForm.get('amount')?.invalid && donationForm.get('amount')?.touched"
+          class="text-red-500 text-sm mt-1">
+          Enter a valid amount (minimum 1).
+        </div>
+      </div>
+      
+      <!-- Name -->
+      <div>
+        <label for="donorName" class="block font-medium text-gray-700 mb-1">Your Name</label>
+        <input
+          id="donorName"
+          type="text"
+          formControlName="donorName"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          placeholder="Enter your name"
+        />
+        <div *ngIf="donationForm.get('donorName')?.invalid && donationForm.get('donorName')?.touched"
+          class="text-red-500 text-sm mt-1">
+          Name is required.
+        </div>
+      </div>
+      
+      <!-- Email -->
+      <div>
+        <label for="donorEmail" class="block font-medium text-gray-700 mb-1">Your Email</label>
+        <input
+          id="donorEmail"
+          type="email"
+          formControlName="donorEmail"
+          class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          placeholder="you@example.com"
+        />
+        <div *ngIf="donationForm.get('donorEmail')?.invalid && donationForm.get('donorEmail')?.touched"
+          class="text-red-500 text-sm mt-1">
+          Enter a valid email address.
+        </div>
+      </div>
+      
+      <!-- Card Info -->
+      <div>
+        <label class="block font-medium text-gray-700 mb-1">Card Information</label>
+        <div #cardInfo id="card-element" class="p-3 border border-gray-300 rounded-xl bg-white shadow-sm h-12"></div>
+        <div *ngIf="!cardReady" class="text-xs text-gray-500 mt-1">
+          Loading payment form...
+        </div>
+      </div>
+      
+      <!-- Error Message -->
+      <div *ngIf="errorMsg" class="bg-red-100 border border-red-400 text-red-800 p-3 rounded">
+        {{ errorMsg }}
+      </div>
+      
+      <!-- Submit -->
+      <button
+        type="submit"
+        [disabled]="processing || donationForm.invalid || !cardReady"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-xl transition"
+        [ngClass]="{'opacity-50 cursor-not-allowed': processing || donationForm.invalid || !cardReady}"
+      >
+        {{ processing ? 'Processing…' : 'Donate' }}
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="edit-sponsoring-container">
+    <h2>Edit Sponsoring</h2>
+  
+    <form (ngSubmit)="updateSponsoring()">
+      <div class="form-group">
+        <label for="project_id">Project ID</label>
+        <input type="number" id="project_id" [(ngModel)]="sponsoring.project_id" name="project_id" disabled>
+      </div>
+  
+      <div class="form-group">
+        <label for="date_signature">Date of Signature</label>
+        <input type="date" id="date_signature" [(ngModel)]="sponsoring.date_signature" name="date_signature" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="montant_approuvee">Approved Amount</label>
+        <input type="number" id="montant_approuvee" [(ngModel)]="sponsoring.montant_approuvee" name="montant_approuvee" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="contrat">Contract</label>
+        <input type="text" id="contrat" [(ngModel)]="sponsoring.contrat" name="contrat" required>
+      </div>
+  
+      <button type="submit" class="btn-submit">Update Sponsoring</button>
+  
+      <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </form>
+  </div>
+  

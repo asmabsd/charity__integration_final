@@ -1,0 +1,86 @@
+/* Container for the entire form */
+.add-sponsoring-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form header */
+  h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+  }
+  
+  /* Form groups for each input field */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Labels for the form fields */
+  label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Input fields */
+  input[type="number"],
+  input[type="date"],
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Focused input fields */
+  input[type="number"]:focus,
+  input[type="date"]:focus,
+  input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  /* Submit button */
+  .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background-color: #45a049;
+  }
+  
+  /* Success and error message styles */
+  .success-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+  }
+  
+  .error-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+  }
+  

@@ -1,0 +1,68 @@
+<div class="edit-delivery-container">
+    <h2>Edit Delivery</h2>
+  
+    <!-- Display error or success messages -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+  
+    <!-- Form to edit delivery -->
+    <form (ngSubmit)="updateDelivery()">
+      <div class="form-group">
+        <label for="donationId">Donation ID</label>
+        <input
+          type="number"
+          id="donationId"
+          [(ngModel)]="delivery.donationId"
+          name="donationId"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="pickupLocation">Pickup Location</label>
+        <input
+          type="text"
+          id="pickupLocation"
+          [(ngModel)]="delivery.pickupLocation"
+          name="pickupLocation"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="dropOffLocation">Drop-off Location</label>
+        <input
+          type="text"
+          id="dropOffLocation"
+          [(ngModel)]="delivery.dropOffLocation"
+          name="dropOffLocation"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select
+          id="status"
+          [(ngModel)]="delivery.status"
+          name="status"
+          class="form-control"
+          required
+        >
+          <option *ngFor="let status of statusEnum | keyvalue" [value]="status.value">{{ status.value }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn-submit">Update Delivery</button>
+    </form>
+  
+    <button class="btn-back" (click)="router.navigate(['/dashboard/deliverylist'])">Back to List</button>
+  </div>
+  

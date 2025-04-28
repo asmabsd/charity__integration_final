@@ -1,0 +1,65 @@
+/* src/app/components/project-edit/project-edit.component.css */
+
+.project-edit-container {
+  max-width: 48rem; /* Same as max-w-3xl */
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.project-edit-title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: bold;
+  color: #b45309; /* text-yellow-700 */
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  color: #374151; /* text-gray-700 */
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.form-input, 
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.form-input:focus, 
+.form-select:focus {
+  border-color: #facc15; /* yellow focus */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.4);
+}
+
+.submit-button {
+  background-color: #f59e0b; /* bg-yellow-500 */
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #d97706; /* bg-yellow-600 */
+}
+
+/* Loading message (optional) */
+.loading-message {
+  text-align: center;
+  color: #facc15;
+  font-weight: bold;
+  margin-bottom: 20px;
+}

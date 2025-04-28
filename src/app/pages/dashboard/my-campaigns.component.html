@@ -1,0 +1,29 @@
+<table class="table">
+  <button class="btn btn-success" (click)="navigateToNewCampaign()">
+    + New Campaign
+  </button>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Goal</th>
+      <th>Raised</th>
+      <th>Actions</th>
+      <th>Prediction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of campaigns">
+      <td>{{ c.title }}</td>
+      <td>{{ c.targetAmount | currency }}</td>
+      <td>{{ c.currentAmount | currency }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary me-2" (click)="navigateToEditCampaign(c.id)">Edit</button>
+        <button class="btn btn-sm btn-danger me-2" (click)="delete(c)">Delete</button>
+        <button class="btn btn-sm btn-primary me-2" (click)="predictDays(c)">Predict</button>
+      </td>
+      <td>
+        <span *ngIf="c.predictedDays !== undefined">{{ c.predictedDays }} days</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

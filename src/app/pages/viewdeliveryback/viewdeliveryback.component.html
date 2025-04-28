@@ -1,0 +1,17 @@
+<div class="view-delivery-container">
+    <h2>View Delivery Details</h2>
+  
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="delivery" class="delivery-details">
+      <p><strong>Donation ID:</strong> {{ delivery.donationId }}</p>
+      <p><strong>Pickup Location:</strong> {{ delivery.pickupLocation }}</p>
+      <p><strong>Drop-off Location:</strong> {{ delivery.dropOffLocation }}</p>
+      <p><strong>Status:</strong> {{ delivery.status }}</p>
+  
+      <button (click)="goBack()" class="btn-back">Go Back</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,84 @@
+/* Conteneur principal */
+.max-w-3xl {
+    max-width: 768px;
+  }
+  
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .p-6 {
+    padding: 1.5rem;
+  }
+  
+  /* Titre principal */
+  h2 {
+    color: #d97706; /* jaune foncé */
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Carte de détails */
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .rounded-xl {
+    border-radius: 1rem;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-6 {
+    padding: 1.5rem;
+  }
+  
+  .border-yellow-200 {
+    border: 1px solid #fef3c7; /* Jaune clair */
+  }
+  
+  .text-gray-800 {
+    color: #1f2937;
+  }
+  
+  .text-gray-600 {
+    color: #4b5563;
+  }
+  
+  /* Statut dynamique */
+  .text-green-600 {
+    color: #16a34a;
+  }
+  
+  .text-yellow-500 {
+    color: #eab308;
+  }
+  
+  .text-red-600 {
+    color: #dc2626;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  /* Bouton retour */
+  button {
+    padding: 0.5rem 1.25rem;
+    background-color: #facc15; /* Jaune vif */
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #eab308; /* Jaune un peu plus foncé */
+  }
+  

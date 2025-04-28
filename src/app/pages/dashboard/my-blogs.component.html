@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>My Blog Posts</h3>
+  <button class="btn btn-success" (click)="navigateToNewPost()">
+    + New Post
+  </button>
+</div>
+<ul class="list-group">
+  <li *ngFor="let p of posts" class="list-group-item d-flex justify-content-between">
+    <span>{{ p.title }}</span>
+    <span>
+      <button class="btn btn-sm btn-primary me-2" (click)="navigateToEditPost(p.id)">
+        Edit
+      </button>
+      <button class="btn btn-sm btn-danger" (click)="delete(p)">Delete</button>
+    </span>
+  </li>
+</ul>

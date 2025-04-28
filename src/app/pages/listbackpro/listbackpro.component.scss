@@ -1,0 +1,127 @@
+/* src/app/components/project-list/project-list.component.css */
+
+.project-list-container {
+    padding: 20px;
+  }
+  
+  .project-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .project-table th, .project-table td {
+    border: 1px solid #f3f4f6; /* light border */
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .project-table th {
+    background-color: #fef9c3; /* light yellow background */
+    color: #78350f; /* brown text */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  .project-table tr:hover {
+    background-color: #fff7d6; /* very soft yellow hover */
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  /* Buttons style */
+  button, a.btn {
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  button i, a.btn i {
+    margin-right: 5px;
+  }
+  
+  /* Specific Buttons */
+  .btn-stats {
+    background-color: #facc15;
+    color: #78350f;
+  }
+  
+  .btn-stats:hover {
+    background-color: #fbbf24;
+  }
+  
+  .btn-new-project {
+    background-color: #fde68a;
+    color: #92400e;
+  }
+  
+  .btn-new-project:hover {
+    background-color: #fcd34d;
+  }
+  
+  .btn-edit {
+    background-color: #facc15; /* Yellow */
+    color: #78350f;
+  }
+  
+  .btn-edit:hover {
+    background-color: #fbbf24;
+  }
+  
+  .btn-delete {
+    background-color: #f87171; /* Soft Red */
+    color: white;
+  }
+  
+  .btn-delete:hover {
+    background-color: #dc2626;
+  }
+  
+  .btn-view {
+    background-color: #4ade80; /* Green */
+    color: white;
+  }
+  
+  .btn-view:hover {
+    background-color: #22c55e;
+  }
+  
+  /* Status Badges */
+  .status-open {
+    color: #22c55e;
+    font-weight: bold;
+  }
+  
+  .status-pending {
+    color: #eab308;
+    font-weight: bold;
+  }
+  
+  .status-closed {
+    color: #ef4444;
+    font-weight: bold;
+  }
+  
+  /* Loading & Error Messages */
+  .loading-message {
+    color: #eab308;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: #dc2626;
+    text-align: center;
+    font-weight: bold;
+  }
+  

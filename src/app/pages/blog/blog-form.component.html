@@ -1,0 +1,22 @@
+<!-- src/app/pages/blog/blog-form.component.html -->
+<div class="container my-4">
+  <h2>{{ editing ? 'Edit Post' : 'New Post' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Title</label>
+      <input formControlName="title" class="form-control" />
+      <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+           class="text-danger">Title is required.</div>
+    </div>
+    <div class="mb-3">
+      <label>Content</label>
+      <textarea formControlName="content" class="form-control" rows="6"></textarea>
+    </div>
+    <div class="mb-3">
+      <label>Image URL</label>
+      <input formControlName="imageUrl" class="form-control" />
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+    <button class="btn btn-success" [disabled]="saving">{{ editing ? 'Update' : 'Publish' }}</button>
+  </form>
+</div>

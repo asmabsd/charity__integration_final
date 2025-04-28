@@ -1,0 +1,26 @@
+<!-- src/app/pages/donation-campaigns/campaign-form.component.html -->
+<div class="container my-4">
+  <h2>{{ editing ? 'Edit Campaign' : 'New Campaign' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Title</label>
+      <input formControlName="title" class="form-control" />
+      <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+           class="text-danger">Title is required.</div>
+    </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea formControlName="description" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="mb-3">
+      <label>Goal Amount</label>
+      <input type="number" formControlName="targetAmount" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label>Image URL</label>
+      <input formControlName="imageUrl" class="form-control" />
+    </div>
+    <div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+    <button class="btn btn-success" [disabled]="saving">{{ editing ? 'Update' : 'Create' }}</button>
+  </form>
+</div>

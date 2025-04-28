@@ -1,0 +1,124 @@
+/* add-delivery.component.css */
+
+/* Container Styling */
+.add-delivery-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 48px 40px 36px 40px;
+  background: linear-gradient(135deg, #ffe082 0%, #ffd54f 100%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.18), 0 2px 8px rgba(0,0,0,0.07);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  border: 1.5px solid #ffb300;
+}
+
+/* Title */
+.add-delivery-container h2 {
+  color: #2e7d32; /* vert foncé */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
+  font-size: 2em;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 18px;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-weight: 600;
+  color: #388e3c; /* vert moyen */
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* Inputs and select */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid #ffe066;
+  border-radius: 7px;
+  background: #fffef6;
+  font-size: 1em;
+  color: #2e7d32; /* texte vert foncé */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(255, 193, 7, 0.07);
+}
+
+input:focus,
+select:focus {
+  border-color: #4caf50; /* vert clair au focus */
+  box-shadow: 0 0 0 2px #a5d6a7cc; /* ombre verte translucide */
+  background: #f1f8e9; /* fond vert très clair */
+}
+
+/* Remove number input spin buttons for webkit */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Button */
+.btn-submit {
+  background: linear-gradient(90deg, #ffc107 0%, #ffb300 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  width: 100%;
+  font-size: 1.08em;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background: linear-gradient(90deg, #ffb300 0%, #ffc107 100%);
+  box-shadow: 0 4px 16px rgba(255, 193, 7, 0.24);
+  color: #fff;
+}
+
+/* Success and error messages */
+.success-message {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background: #f4ffe6;
+  color: #5c8001;
+  border-left: 5px solid #d6e99c;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(92, 128, 1, 0.15);
+}
+
+.error-message {
+  margin-top: 20px;
+  padding: 12px 18px;
+  background: #fff3e0;
+  color: #b71c1c;
+  border-left: 5px solid #ffd1a7;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(183, 28, 28, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .add-delivery-container {
+    max-width: 98vw;
+    padding: 18px 7px 14px 7px;
+  }
+  .add-delivery-container h2 {
+    font-size: 1.35em;
+  }
+}

@@ -1,0 +1,45 @@
+<div *ngIf="loading">Chargement...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="!loading && !error && stats">
+  <h2>Statistiques des Projets</h2>
+
+  <div class="circle-container">
+    <div class="circle" style="background-color: #4CAF50;">
+      <span>Ouverts: {{ stats.ouvertProjects }}</span>
+      <small>{{ getProjectPercentage(stats.ouvertProjects) | number:'1.0-0' }}%</small>
+    </div>
+    <div class="circle" style="background-color: #FFC107;">
+      <span>En Attente: {{ stats.enAttenteProjects }}</span>
+      <small>{{ getProjectPercentage(stats.enAttenteProjects) | number:'1.0-0' }}%</small>
+    </div>
+    <div class="circle" style="background-color: #F44336;">
+      <span>Fermés: {{ stats.fermeProjects }}</span>
+      <small>{{ getProjectPercentage(stats.fermeProjects) | number:'1.0-0' }}%</small>
+    </div>
+  </div>
+
+  <h2>Statistiques des Livraisons</h2>
+
+  <div class="circle-container">
+    <div class="circle" style="background-color: #2196F3;">
+      <span>Pending: {{ stats.pendingDeliveries }}</span>
+      <small>{{ getDeliveryPercentage(stats.pendingDeliveries) | number:'1.0-0' }}%</small>
+    </div>
+    <div class="circle" style="background-color: #FF9800;">
+      <span>In Transit: {{ stats.inTransitDeliveries }}</span>
+      <small>{{ getDeliveryPercentage(stats.inTransitDeliveries) | number:'1.0-0' }}%</small>
+    </div>
+    <div class="circle" style="background-color: #4CAF50;">
+      <span>Delivered: {{ stats.deliveredDeliveries }}</span>
+      <small>{{ getDeliveryPercentage(stats.deliveredDeliveries) | number:'1.0-0' }}%</small>
+    </div>
+  </div>
+
+  <h2>Budget</h2>
+  <div class="budget-box">
+    <p>Total Budget: {{ stats.totalBudget }} €</p>
+    <p>Total Sponsoring: {{ stats.totalSponsoringAmount }} €</p>
+    <p>Moyenne Sponsoring: {{ stats.averageSponsoringAmount | number:'1.0-2' }} €</p>
+  </div>
+</div>

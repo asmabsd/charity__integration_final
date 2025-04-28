@@ -1,0 +1,117 @@
+/* Container for the list */
+.sponsoring-list-container {
+    background-color: #fff5e6;  /* Light yellow background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  .sponsoring-list-container h2 {
+    color: #ffcc00;  /* Yellow color */
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Button for adding new sponsor */
+  a.btn.btn-view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffcc00; /* Yellow background */
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  a.btn.btn-view:hover {
+    background-color: #e6b800;  /* Darker yellow on hover */
+  }
+  
+  a.btn.btn-view i {
+    margin-right: 10px;
+  }
+  
+  /* Table styles */
+  .sponsoring-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sponsoring-table th, .sponsoring-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .sponsoring-table th {
+    background-color: #ffcc00;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .sponsoring-table td {
+    background-color: #fff7e6;  /* Light yellow */
+  }
+  
+  /* Actions buttons */
+  .sponsoring-table button {
+    background-color: #ffcc00;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  
+  .sponsoring-table button:hover {
+    background-color: #e6b800; /* Darker yellow on hover */
+  }
+  
+  .sponsoring-table button i {
+    margin-right: 5px;
+  }
+  
+  /* View button color */
+  .sponsoring-table button.view-button {
+    background-color: #4caf50;  /* Green for view */
+  }
+  
+  .sponsoring-table button.view-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Edit button color */
+  .sponsoring-table button.edit-button {
+    background-color: #ffa500;  /* Orange for edit */
+  }
+  
+  .sponsoring-table button.edit-button:hover {
+    background-color: #ff8c00;  /* Darker orange on hover */
+  }
+  
+  /* Delete button color */
+  .sponsoring-table button.delete-button {
+    background-color: #f44336;  /* Red for delete */
+  }
+  
+  .sponsoring-table button.delete-button:hover {
+    background-color: #d32f2f;  /* Darker red on hover */
+  }
+  
+  /* No sponsorings message */
+  .no-sponsorings {
+    text-align: center;
+    font-size: 16px;
+    color: #ff5722;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  

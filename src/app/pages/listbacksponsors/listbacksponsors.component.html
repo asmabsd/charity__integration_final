@@ -1,0 +1,43 @@
+<!-- src/app/components/sponsoring-list/sponsoring-list.component.html -->
+<div class="sponsoring-list-container">
+    <h2>Sponsoring List</h2>
+    <a [routerLink]="['/dashboard/addsponsor']"
+    class="btn btn-view flex items-center justify-center">
+    <i class="fas fa-eye mr-2"></i> + New Sponsor
+  </a>
+    <table *ngIf="sponsorings.length > 0" class="sponsoring-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Project ID</th>
+          <th>Date of Signature</th>
+          <th>Approved Amount</th>
+          <th>Contract</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sponsoring of sponsorings">
+          <td>{{ sponsoring.idSponsoring }}</td>
+          <td>{{ sponsoring.project_id }}</td>
+          <td>{{ sponsoring.date_signature }}</td>
+          <td>{{ sponsoring.montant_approuvee }}</td>
+          <td>{{ sponsoring.contrat }}</td>
+          <td>
+            <button class="view-button" (click)="viewSponsoring(sponsoring.idSponsoring)">
+              <i class="fas fa-eye"></i> View
+            </button>
+            <button class="edit-button" (click)="editSponsoring(sponsoring.idSponsoring)">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="delete-button" (click)="deleteSponsoring(sponsoring)">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="sponsorings.length === 0" class="no-sponsorings">No sponsorings found.</div>
+  </div>
+  

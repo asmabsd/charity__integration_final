@@ -1,0 +1,54 @@
+<div class="max-w-2xl mx-auto p-4 space-y-4">
+  <!-- Sticky Post Input -->
+  <div class="sticky top-0 z-10 bg-white shadow-md rounded-2xl p-4">
+    <form (ngSubmit)="submitPost()" class="space-y-3">
+      <input
+        [(ngModel)]="newPost.title"
+        name="title"
+        placeholder="What's on your mind?"
+        class="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        required
+      />
+      <textarea
+        [(ngModel)]="newPost.content"
+        name="content"
+        placeholder="Write more..."
+        rows="3"
+        class="w-full p-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      ></textarea>
+      <button
+        type="submit"
+        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-xl w-full"
+      >
+        Post
+      </button>
+    </form>
+  </div>
+
+  <!-- Posts Feed -->
+  <div *ngFor="let p of posts" class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-[1.02] duration-300 mb-6">
+    <!-- Image container with fixed aspect ratio -->
+    <div *ngIf="p.imageUrl" class="h-48 overflow-hidden">
+      <img [src]="p.imageUrl" [alt]="p.title" class="w-full h-full object-cover">
+    </div>
+    
+    <!-- Content section -->
+    <div class="p-5 space-y-3">
+      <h3 class="text-xl font-bold text-gray-800">{{ p.title }}</h3>
+      <p class="text-gray-600 text-sm leading-relaxed">{{ p.content?.substring(0, 150) }}…</p>
+      
+      <!-- Author info and date -->
+      <div class="flex items-center justify-between pt-2">
+        <div class="text-xs text-gray-500">
+          By <span class="font-medium">{{ p.authorName }}</span> • {{ p.publishedDate | date:'mediumDate' }}
+        </div>
+        <a [routerLink]="[p.id]" class="inline-flex items-center text-indigo-600 font-medium text-sm hover:text-indigo-800">
+          Read more
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
