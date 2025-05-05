@@ -1,0 +1,48 @@
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
+<h2>Liste des Opportunités</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Catégorie</th>
+      <th>Localisation</th>
+      <th>Date de publication</th>
+      <th>Date limite</th>
+      <th>Type</th>
+      <th>Postée par</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let opportunity of opportunities">
+      <td>{{ opportunity.title }}</td>
+      <td>{{ opportunity.description }}</td>
+      <td>{{ opportunity.category }}</td>
+      <td>{{ opportunity.location }}</td>
+      <td>{{ opportunity.datePosted }}</td>
+      <td>{{ opportunity.deadline }}</td>
+      <td>{{ opportunity.type }}</td>
+      <td>
+        <ng-container *ngIf="opportunity.postedBy; else noPostedBy">
+          {{ opportunity.postedBy.first_name }} {{ opportunity.postedBy.last_name }}
+        </ng-container>
+        <ng-template #noPostedBy>
+          N/A
+        </ng-template>
+      </td>
+      <td>
+        <button *ngIf="opportunity.id" (click)="goToEdit(opportunity.id)" class="btn btn-primary">
+          Modifier
+        </button>
+        <button *ngIf="opportunity.id" (click)="deleteOpportunity(opportunity.id)" class="btn btn-danger">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table> 

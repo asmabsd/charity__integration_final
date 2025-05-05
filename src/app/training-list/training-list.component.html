@@ -1,0 +1,25 @@
+<h2>Liste des Formations</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Formateur</th>
+      <th>Localisation</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let training of trainings">
+      <td>{{ training.title }}</td>
+      <td>{{ training.description }}</td>
+      <td>{{ training.trainer }}</td>
+      <td>{{ training.location }}</td>
+      <td>
+        <button class="btn btn-warning btn-sm" (click)="editTraining(training.id!)">Modifier</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteTraining(training.id!)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

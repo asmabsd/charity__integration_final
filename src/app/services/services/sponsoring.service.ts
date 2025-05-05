@@ -7,7 +7,7 @@ import { Sponsoring } from '../models/sponsoring.model';
   providedIn: 'root'
 })
 export class SponsoringService {
-  private apiUrl = 'http://localhost:8080/sponsoring'; // Adjust this URL to your API endpoint
+  private apiUrl = 'http://localhost:8081/sponsoring'; // Adjust this URL to your API endpoint
 
   constructor(private http: HttpClient) {}
 
@@ -36,7 +36,7 @@ export class SponsoringService {
     return this.http.delete<void>(`${this.apiUrl}/delete-sponsoring/${id}`);
   }
 
-  private baseUrl = 'http://localhost:8020/sponsoring';
+  private baseUrl = 'http://localhost:8081/sponsoring';
 
 
   contactSponsor(id: number): Observable<any> {

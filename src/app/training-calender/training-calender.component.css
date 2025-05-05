@@ -1,0 +1,50 @@
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    border-radius: 12px;
+  }
+  
+  .mwl-calendar-month-view {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+  }
+  
+  .modal-content {
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .modal-footer {
+    border-top: 1px solid #dee2e6;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  
+  .modal-title {
+    font-weight: 600;
+    font-size: 20px;
+  }
+  
+  .modal-body p {
+    margin-bottom: 8px;
+  }
+  

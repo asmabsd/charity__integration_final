@@ -1,0 +1,134 @@
+/* Style de l'alerte d'erreur */
+.alert {
+  width: 90%;
+  margin: 20px auto;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+  box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.1);
+}
+
+/* Titre principal */
+h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 8px auto 0;
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  border-radius: 2px;
+}
+
+/* Style du tableau */
+.table {
+  width: 95%;
+  margin: 0 auto 50px;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* En-têtes */
+.table th {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+/* Cellules */
+.table td {
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Lignes alternées */
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover sur les lignes */
+.table tbody tr:hover {
+  background-color: #e0f7fa;
+  transition: background 0.3s ease;
+}
+
+/* Boutons Modifier et Supprimer */
+.btn {
+  padding: 8px 14px;
+  margin: 2px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2980b9, #1c5980);
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #c0392b, #96281b);
+  transform: scale(1.05);
+}
+
+/* Animation fadeIn */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table, .table th, .table td {
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table, .table th, .table td {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+}

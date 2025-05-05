@@ -1,0 +1,9 @@
+<h2>Scanner un QR Code</h2>
+
+<!-- Composant Scanner QR Code -->
+<!--<ngx-scanner-qrcode (scanSuccess)="onQrCodeScanned($event)"></ngx-scanner-qrcode>-->
+
+<!-- Affichage du résultat scanné -->
+<div *ngIf="qrResult">
+  <p>QR Code scanné : {{ qrResult }}</p>
+</div>

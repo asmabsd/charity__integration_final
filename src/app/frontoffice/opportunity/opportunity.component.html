@@ -1,0 +1,72 @@
+<h2>Créer une Opportunité</h2>
+
+<form (ngSubmit)="submitForm()" #opportunityForm="ngForm">
+  <!-- Titre -->
+  <label for="title">Titre <span class="required">*</span></label>
+  <input type="text" id="title" [(ngModel)]="opportunity.title" name="title" required #title="ngModel" />
+  <div *ngIf="title.invalid && title.touched" class="error">Le titre est requis.</div>
+
+  <!-- Description -->
+  <label for="description">Description <span class="required">*</span></label>
+  <textarea id="description" [(ngModel)]="opportunity.description" name="description" required #description="ngModel"></textarea>
+  <div *ngIf="description.invalid && description.touched" class="error">La description est requise.</div>
+
+  <!-- Catégorie -->
+  <label for="category">Catégorie</label>
+  <select id="category" [(ngModel)]="opportunity.category" name="category">
+    <option value="EMPLOI">EMPLOI</option>
+    <option value="FORMATION">FORMATION</option>
+    <option value="STAGE">STAGE</option>
+    <option value="BÉNÉVOLAT">BÉNÉVOLAT</option>
+  </select>
+
+  <!-- Localisation -->
+  <label for="location">Localisation</label>
+  <input type="text" id="location" [(ngModel)]="opportunity.location" name="location" />
+
+  <!-- Date limite -->
+  <label for="deadline">Date limite <span class="required">*</span></label>
+  <input type="date" id="deadline" [(ngModel)]="opportunity.deadline" name="deadline" required #deadline="ngModel" />
+  <div *ngIf="deadline.invalid && deadline.touched" class="error">La date limite est requise.</div>
+
+  <!-- Type -->
+  <label for="type">Type</label>
+  <select id="type" [(ngModel)]="opportunity.type" name="type">
+    <option value="FULL_TIME">FULL_TIME</option>
+    <option value="PART_TIME">PART_TIME</option>
+    <option value="REMOTE">REMOTE</option>
+    <option value="HYBRID">HYBRID</option>
+  </select>
+
+  <!-- Bouton de soumission -->
+  <button type="submit" class="btn btn-primary" [disabled]="opportunityForm.invalid">Créer</button>
+</form>
+
+<!-- Messages d'alerte -->
+<div *ngIf="successMessage" class="alert alert-success mt-3">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">
+  {{ errorMessage }}
+</div>
+
+<!-- 🆕 Aperçu Live -->
+<div *ngIf="opportunity.title || opportunity.description" class="preview-container">
+  <h3>Aperçu de l'Opportunité</h3>
+  <div class="preview-card">
+    <h4>{{ opportunity.title || 'Titre...' }}</h4>
+    <p>{{ opportunity.description || 'Description...' }}</p>
+    <p><strong>Catégorie :</strong> {{ opportunity.category }}</p>
+    <p><strong>Localisation :</strong> {{ opportunity.location || 'Non spécifiée' }}</p>
+    <p><strong>Date Limite :</strong> {{ opportunity.deadline || 'Non spécifiée' }}</p>
+    <p><strong>Type :</strong> {{ opportunity.type }}</p>
+  </div>
+</div>
+<button type="button" class="btn btn-secondary" (click)="goToOpportunity()">Add</button>
+
+
+<!-- Scanner QR Code -->
+<h2>Scanner un QR Code</h2>
+<app-qr-scanner></app-qr-scanner>
+

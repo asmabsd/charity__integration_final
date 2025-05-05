@@ -1,0 +1,130 @@
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<h2>Modifier l'Opportunité</h2>
+
+<form (ngSubmit)="updateOpportunity()" #opportunityForm="ngForm">
+
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input
+      type="text"
+      id="title"
+      class="form-control"
+      [(ngModel)]="opportunity.title"
+      name="title"
+      required
+      #title="ngModel"
+    />
+    <div *ngIf="title.invalid && title.touched" class="text-danger">
+      Le titre est requis.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      class="form-control"
+      [(ngModel)]="opportunity.description"
+      name="description"
+      required
+      #description="ngModel"
+    ></textarea>
+    <div *ngIf="description.invalid && description.touched" class="text-danger">
+      La description est requise.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Catégorie</label>
+    <select
+      id="category"
+      class="form-control"
+      [(ngModel)]="opportunity.category"
+      name="category"
+      required
+      #category="ngModel"
+    >
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+    <div *ngIf="category.invalid && category.touched" class="text-danger">
+      La catégorie est requise.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="location">Localisation</label>
+    <input
+      type="text"
+      id="location"
+      class="form-control"
+      [(ngModel)]="opportunity.location"
+      name="location"
+      required
+      #location="ngModel"
+    />
+    <div *ngIf="location.invalid && location.touched" class="text-danger">
+      La localisation est requise.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="datePosted">Date de publication</label>
+    <input
+      type="date"
+      id="datePosted"
+      class="form-control"
+      [(ngModel)]="opportunity.datePosted"
+      name="datePosted"
+      required
+      #datePosted="ngModel"
+    />
+    <div *ngIf="datePosted.invalid && datePosted.touched" class="text-danger">
+      La date de publication est requise.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="deadline">Date limite</label>
+    <input
+      type="date"
+      id="deadline"
+      class="form-control"
+      [(ngModel)]="opportunity.deadline"
+      name="deadline"
+      required
+      #deadline="ngModel"
+    />
+    <div *ngIf="deadline.invalid && deadline.touched" class="text-danger">
+      La date limite est requise.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="type">Type</label>
+    <select
+      id="type"
+      class="form-control"
+      [(ngModel)]="opportunity.type"
+      name="type"
+      required
+      #type="ngModel"
+    >
+      <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+    </select>
+    <div *ngIf="type.invalid && type.touched" class="text-danger">
+      Le type est requis.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="opportunityForm.invalid">Mettre à jour</button>
+
+</form>
+
+<a routerLink="/viewopportunity" class="btn btn-secondary mt-3">Retour à la liste</a>

@@ -24,6 +24,20 @@ import { EditsponsorComponent } from '../editsponsor/editsponsor.component';
 import { ViewsponsorComponent } from '../viewsponsor/viewsponsor.component';
 import { ProjectstatsbackComponent } from '../projectstatsback/projectstatsback.component';
 import { ListbackproComponent } from '../listbackpro/listbackpro.component';
+import { EventComponent } from '../../event/event.component';
+import { AvisComponent } from '../../avis/avis.component';
+import { CalendarTrainingComponent } from '../../frontoffice/calendriertraining/calendar-training/calendar-training.component';
+import { HowItWorksComponent } from '../../how-it-works/how-it-works.component';
+import { AboutComponent } from '../../about/about.component';
+import { DonateComponent } from '../../donate/donate.component';
+import { OpportunityComponent } from '../../frontoffice/opportunity/opportunity.component';
+import { GalleryComponent } from '../../gallery/gallery.component';
+import { EditOpportunityComponent } from '../../edit-opportunity/edit-opportunity.component';
+import { ViewOpportunityComponent } from '../../view-opportunity/view-opportunity.component';
+import { transition } from '@angular/animations';
+import { TrainingCalenderComponent } from '../../training-calender/training-calender.component';
+import { TrainingListComponent } from '../../training-list/training-list.component';
+import { CalendarComponent } from '../../calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -49,6 +63,36 @@ const routes: Routes = [
       { path: 'listesponsoring', component: ListbacksponsorsComponent },
       { path: 'editsponsoring/:id', component: EditsponsorComponent },
       { path: 'viewsponsoring/:id', component: ViewsponsorComponent },
+      { path: 'events', component: EventComponent },
+      { path: 'avis', component: AvisComponent },
+
+      
+      
+        { path: 'how-it-works', component: HowItWorksComponent },
+        { path: 'donate', component: DonateComponent},
+        { path: 'opp', component: OpportunityComponent},
+      
+        { path: 'gallery', component:GalleryComponent },
+        { path: 'edit-opportunity/:id', component: EditOpportunityComponent },
+        { path: 'opportunity', component: OpportunityComponent },
+        { path: 'viewopportunity', component: ViewOpportunityComponent},
+        { path: 'training', component: TrainingCalenderComponent},
+        { path: 'viewtraining', component: TrainingListComponent },
+        { path: 'calendar', component: CalendarComponent} ,
+        { path: 'calendar', component: CalendarComponent } ,
+        { path: 'opportunity', component: CalendarComponent } ,
+      
+        { path: 'how-it-works', component: HowItWorksComponent },
+        { path: 'about', component: AboutComponent},
+        { path: 'donate', component: DonateComponent},
+        { path: 'gallery', component: GalleryComponent},
+        { path: 'avis', component: AvisComponent},
+        { path: 'events', component: EventComponent },
+        { path: 'dashboard', component: DashboardComponent },
+      
+      
+      
+
 
       { path: 'projects/:id', component:  DetailsprojectbackComponent},
 { path: 'projects/edit/:id', component: EditprojectbackComponent},

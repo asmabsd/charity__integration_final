@@ -1,0 +1,150 @@
+<div class="home-container">
+  <section class="hero-section">
+    <h1 style="color: red;">HOME</h1>
+    <p>Discover amazing events and read what others have to say.</p>
+    <a routerLink="/avis" class="hero-button">Read Reviews</a>
+  </section>
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Upcoming Events</h2>
+      <a routerLink="/events" class="view-all-events">View All Events</a> </div>
+    <p>Check out our full list of upcoming events and manage them on the events page.</p>
+    </section>
+
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Upcoming Events</h2>
+    </div>
+    <div class="event-grid">
+      <div class="event-card">
+        <img src="event1.jpg" alt="Event 1" class="event-image" />
+        <h3>Souk Charity Sale</h3>
+        <p class="event-date">Date: 2024-12-10</p>
+        <p>Description: Event 1 description...</p>
+        <a href="#" class="event-button">Learn More</a>
+      </div>
+      <div class="event-card">
+        <img src="event2.jpg" alt="Event 2" class="event-image" />
+        <h3>Event Title 2</h3>
+        <p class="event-date">Date: 2024-12-15</p>
+        <p>Description: Event 2 description...</p>
+        <a href="#" class="event-button">Learn More</a>
+      </div>
+      </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-header">
+      <h2>User Reviews</h2>
+      <a routerLink="/reviews" class="view-all-events">View All Reviews</a>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="user-info">
+          <img src="user1.jpg" alt="User 1" class="avatar" />
+          <div class="user-details">
+            <h3>User 1</h3>
+            <p class="date">2024-11-25</p>
+          </div>
+        </div>
+        <p class="content">Review content 1...</p>
+      </div>
+      <div class="review-card">
+        <div class="user-info">
+          <img src="user2.jpg" alt="User 2" class="avatar" />
+          <div class="user-details">
+            <h3>User 2</h3>
+            <p class="date">2024-11-28</p>
+          </div>
+        </div>
+        <p class="content">Review content 2...</p>
+      </div>
+      </div>
+  </section>
+</div>
+<div class="event-container">
+    <div class="add-event-section">
+      <h2>Add New Event</h2>
+      <form>
+        <div class="form-group">
+          <label for="token">Token:</label>
+          <input type="text" id="token" name="token" [(ngModel)]="newEvent.token" />
+        </div>
+  
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" [(ngModel)]="newEvent.title" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" [(ngModel)]="newEvent.description"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" [(ngModel)]="newEvent.date" />
+        </div>
+  
+        <div class="form-group">
+          <label for="location">Location ID:</label>  
+          <input type="text" id="location" name="location" [(ngModel)]="newEvent.location" required />  
+        </div>
+        
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <input type="text" id="status" name="status" [(ngModel)]="newEvent.status" />
+        </div>
+  
+        <div class="form-group">
+          <label for="capacity">Capacity:</label>
+          <input type="number" id="capacity" name="capacity" [(ngModel)]="newEvent.capacity" />
+        </div>
+  
+        <div class="form-group">
+          <label for="categories">Category:</label>
+          <select id="categories" name="categories" [(ngModel)]="newEvent.categories">
+            <option value="" disabled>Select Category</option>
+            <option *ngFor="let category of eventCategories" [value]="category">{{ category }}</option>
+          </select>
+        </div>
+     
+      
+        <button (click)="addEvent()">Add Event</button>
+      </form>
+    </div>
+  
+    <div class="event-list-section">
+      <h2>Upcoming Events</h2>
+      <div class="report-download">
+        <label for="downloadTokenEvents">Download Token:</label>
+        <input type="text" id="downloadTokenEvents" name="downloadTokenEvents" [(ngModel)]="downloadTokenEvents" />
+        <button class="button" (click)="downloadEventsReport()">Download Events Report (PDF)</button>
+      </div>
+      <div class="search-filter">
+        <label for="searchToken">Search Token:</label>
+        <input type="text" id="searchToken" name="searchToken" [(ngModel)]="searchToken" />
+  
+        <input type="text" placeholder="Search Events" [(ngModel)]="searchQuery" />
+        <select [(ngModel)]="filterCategory">
+          <option value="">All Categories</option>
+          <option *ngFor="let category of uniqueCategories" [value]="category">{{ category }}</option>
+        </select>
+        <button class="button" (click)="showEvents()">Show Events</button>
+      </div>
+  
+      <div class="event-grid">
+        <div *ngFor="let event of filteredEvents | paginate: { itemsPerPage: pageSize, currentPage: page }" class="event-card">
+          <h3>{{ event.title }}</h3>
+          <p>Date: {{ event.date | date: 'yyyy-MM-dd' }}</p>
+          <p>Category: {{ event.categories }}</p>
+          <p>{{ event.description }}</p>
+          <p>Location: {{ event.location }}</p>
+          <p>Status: {{ event.status }}</p>
+          <p>Capacity: {{ event.capacity }}</p>
+          <button (click)="viewEventDetails(event.id)">View Details</button>
+        </div>
+      </div>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>

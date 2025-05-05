@@ -8,7 +8,7 @@ import { Delivery } from '../models/delivery.model';
   providedIn: 'root',
 })
 export class DeliveryService {
-  private apiUrl = 'http://localhost:8080/delivery';  // Adjust the URL to match your backend
+  private apiUrl = 'http://localhost:8081/delivery';  // Adjust the URL to match your backend
 
   constructor(private http: HttpClient) {}
 

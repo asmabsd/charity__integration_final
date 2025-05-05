@@ -49,7 +49,7 @@ export class AddsponsorfrontComponent {
     }
 
     goToList() {
-      this.router.navigate(['/your-list-route']);
+      this.router.navigate(['/sponsorfrontliste']);
     }
   }
   

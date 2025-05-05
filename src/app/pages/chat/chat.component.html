@@ -1,0 +1,20 @@
+
+    <!-- Chat Floating Button + Chat Box -->
+    <div class="chat-toggle-btn">
+        <img src="/chat.jpg" alt="AI Bot" class="chat-icon" (click)="toggleChat()"/>
+    </div>
+
+    <div *ngIf="showChat" class="chat-box">
+        <h3 class="chat-title">Chat with our Bot AI</h3>
+
+        <div class="message-container">
+            <div *ngFor="let message of messageHistory" [ngClass]="{'user-message': message.from === 'user', 'bot-message': message.from === 'bot'}">
+                {{ message.message }}
+            </div>
+        </div>
+
+        <div class="chat-input-group">
+            <input [(ngModel)]="prompt" type="text" placeholder="Type your message..." class="chat-input">
+            <button (click)="generateResponse()" class="chat-send-btn">Send</button>
+        </div>
+    </div>

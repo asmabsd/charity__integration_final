@@ -10,7 +10,7 @@ import { ProjectStats} from '../models/ProjectStats.model'; // Assurez-vous d'av
   providedIn: 'root',
 })
 export class ProjectService {
-  private baseUrl = 'http://localhost:8080/projects'; 
+  private baseUrl = 'http://localhost:8081/projects'; 
 
   constructor(private http: HttpClient) {
     this.generativeAI = new GoogleGenerativeAI('AIzaSyAjQ9ab1ReJPH3IBR8-IYrLeHaj3Rs_8e4');
@@ -94,7 +94,7 @@ export class ProjectService {
     return this.messageHistory.asObservable();
   }
 
-  private apiUrl2 = 'http://localhost:8080/projects/stats';
+  private apiUrl2 = 'http://localhost:8081/projects/stats';
 
 
   getStatistics(): Observable<ProjectStats> {
@@ -102,7 +102,7 @@ export class ProjectService {
   }
 
   updateProjectStatus(projectId: number, newStatus: 'OUVERT' | 'FERME'): Observable<any> {
-    return this.http.patch(`http://localhost:8080/projects/status/${projectId}`, { status: newStatus });
+    return this.http.patch(`http://localhost:8081/projects/status/${projectId}`, { status: newStatus });
   }
 
 }

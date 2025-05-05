@@ -1,0 +1,90 @@
+<h2>Créer une Formation</h2>
+
+<form (ngSubmit)="addTraining()" #trainingForm="ngForm">
+  <!-- Titre -->
+  <div class="form-group">
+    <label for="title">Titre <span class="text-danger">*</span></label>
+    <input type="text" id="title" name="title" [(ngModel)]="training.title" class="form-control" required #titleControl="ngModel" />
+    <div *ngIf="titleControl.invalid && titleControl.touched" class="text-danger">
+      Le titre est obligatoire.
+    </div>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description">Description <span class="text-danger">*</span></label>
+    <textarea id="description" name="description" [(ngModel)]="training.description" class="form-control" required #descriptionControl="ngModel"></textarea>
+    <div *ngIf="descriptionControl.invalid && descriptionControl.touched" class="text-danger">
+      La description est obligatoire.
+    </div>
+  </div>
+
+  <!-- Catégorie -->
+  <div class="form-group">
+    <label for="category">Catégorie</label>
+    <select id="category" name="category" [(ngModel)]="training.category" class="form-control">
+      <option value="FORMATION">FORMATION</option>
+      <option value="SEMINAIRE">SEMINAIRE</option>
+      <option value="WEBINAIRE">WEBINAIRE</option>
+    </select>
+  </div>
+
+  <!-- Localisation -->
+  <div class="form-group">
+    <label for="location">Localisation</label>
+    <input type="text" id="location" name="location" [(ngModel)]="training.location" class="form-control" />
+  </div>
+
+  <!-- Formateur -->
+  <div class="form-group">
+    <label for="trainer">Formateur</label>
+    <input type="text" id="trainer" name="trainer" [(ngModel)]="training.trainer" class="form-control" />
+  </div>
+
+  <!-- Date de début -->
+  <div class="form-group">
+    <label for="startDate">Date de début <span class="text-danger">*</span></label>
+    <input type="date" id="startDate" name="startDate" [(ngModel)]="training.startDate" class="form-control" required #startDateControl="ngModel" />
+    <div *ngIf="startDateControl.invalid && startDateControl.touched" class="text-danger">
+      La date de début est obligatoire.
+    </div>
+  </div>
+
+  <!-- Date de fin -->
+  <div class="form-group">
+    <label for="endDate">Date de fin <span class="text-danger">*</span></label>
+    <input type="date" id="endDate" name="endDate" [(ngModel)]="training.endDate" class="form-control" required #endDateControl="ngModel" />
+    <div *ngIf="endDateControl.invalid && endDateControl.touched" class="text-danger">
+      La date de fin est obligatoire.
+    </div>
+  </div>
+
+  <!-- Type -->
+  <div class="form-group">
+    <label for="type">Type</label>
+    <select id="type" name="type" [(ngModel)]="training.type" class="form-control">
+      <option value="FULL_TIME">FULL TIME</option>
+      <option value="PART_TIME">PART TIME</option>
+    </select>
+  </div>
+
+  <!-- Bouton de soumission -->
+  <button type="submit" class="btn btn-primary mt-3" [disabled]="trainingForm.invalid">
+    Créer Formation
+  </button>
+</form>
+
+<!-- 🆕 Aperçu dynamique de la formation -->
+<div *ngIf="training.title || training.description" class="preview-training">
+  <h3>Aperçu de la Formation</h3>
+  <div class="training-card">
+    <h4>{{ training.title || 'Titre...' }}</h4>
+    <p>{{ training.description || 'Description...' }}</p>
+    <p><strong>Catégorie :</strong> {{ training.category }}</p>
+    <p><strong>Localisation :</strong> {{ training.location || 'Non spécifiée' }}</p>
+    <p><strong>Formateur :</strong> {{ training.trainer || 'Non spécifié' }}</p>
+    <p><strong>Début :</strong> {{ training.startDate || 'Non spécifiée' }}</p>
+    <p><strong>Fin :</strong> {{ training.endDate || 'Non spécifiée' }}</p>
+    <p><strong>Type :</strong> {{ training.type }}</p>
+  </div>
+</div>

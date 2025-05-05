@@ -1,0 +1,70 @@
+<div class="avis-container">
+    <div class="add-review-section">
+      <h2>Leave a Review</h2>
+      <form>
+        <div class="form-group">
+          <label for="token">Token:</label>
+          <input type="text" id="token" name="token" [(ngModel)]="newReview.token" />
+        </div>
+  
+        <div class="form-group">
+          <label for="rating">Rating:</label>
+          <div class="rating">
+            <span class="star" *ngFor="let i of [1, 2, 3, 4, 5]" (click)="newReview.rating = i" [class.selected]="i <= newReview.rating">&#9733;</span>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="content">Content:</label>
+          <textarea id="content" name="content" [(ngModel)]="newReview.content"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="categories">Categories:</label>
+          <input type="text" id="categories" name="categories" [(ngModel)]="newReview.categories" />
+        </div>
+  
+        <div class="form-group">
+          <label for="tags">Tags:</label>
+          <input type="text" id="tags" name="tags" [(ngModel)]="newReview.tags" />
+        </div>
+  
+        <button (click)="addReview()">Submit Review</button>
+      </form>
+    </div>
+  
+    <div class="review-list-section">
+      <h2>User Reviews</h2>
+      <div class="search-filter">
+        <label for="searchToken">Search Token:</label>
+        <input type="text" id="searchToken" name="searchToken" [(ngModel)]="searchToken" />
+  
+        <input type="text" placeholder="Search Reviews" [(ngModel)]="searchQuery" />
+        <select [(ngModel)]="filterCategory">
+          <option value="">All Categories</option>
+          <option *ngFor="let category of uniqueCategories" [value]="category">{{ category }}</option>
+        </select>
+        <button (click)="showReviews()">Show Reviews</button>
+      </div>
+  
+      <div class="review-grid">
+        <div *ngFor="let review of filteredReviews | paginate: { itemsPerPage: pageSize, currentPage: page }" class="review-card">
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/50" alt="User Avatar" class="avatar" />
+            <div class="user-details">
+              <h3>{{ review.categories }}</h3>
+              <p class="date">{{ review.createdAt | date: 'medium' }}</p>
+            </div>
+          </div>
+          <div class="rating">
+            <span class="star" *ngFor="let i of [1, 2, 3, 4, 5]" [class.selected]="i <= review.rating">&#9733;</span>
+          </div>
+          <p class="content">{{ review.contenue }}</p>
+          <div class="tags">
+            <span class="tag" *ngFor="let tag of review.tags.split(',')">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>

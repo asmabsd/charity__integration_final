@@ -42,7 +42,7 @@ export class AddsponsoringComponent {
           contrat: '',
           projects: []
         };
-        this.router.navigate(['/dashboard/listesponsoring']);
+        this.router.navigate(['/sponsorfrontliste']);
       },
       (error) => {
         console.error('Error adding sponsoring:', error);

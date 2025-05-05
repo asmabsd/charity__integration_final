@@ -8,7 +8,7 @@ import { VideoComponent } from "../../components/video/video.component";
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [RouterModule, CommonModule, NavbarComponent],
+  imports: [RouterModule, CommonModule , NavbarComponent],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })

@@ -25,6 +25,7 @@ import { EditsponsorComponent } from '../editsponsor/editsponsor.component';
 import { AddsponsorfrontComponent } from '../addsponsorfront/addsponsorfront.component';
 import { ProjectstatsbackComponent } from '../projectstatsback/projectstatsback.component';
 import { ListbackproComponent } from '../listbackpro/listbackpro.component';
+import { ChatComponent } from '../chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ AdddeliverybackComponent,
 DeliverylistbackComponent,
 EditsponsorComponent,
 AddsponsorfrontComponent,
+ChatComponent,
     // your list components
     MyCampaignsComponent,
     MyBlogsComponent,
